@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<section class="home-slider owl-carousel">
+
+    <div class="slider-item" style="background-image: url({{banner_image.image.url}});" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text justify-content-center align-items-center">
+
+          <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Coaches</h1>
+              <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span>Coaches</span></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ftco-section">
+      <div class="container">
+          <div class="row justify-content-center mb-5">
+        <div class="col-md-7 heading-section text-center ftco-animate">
+          <h2 class="mb-4">Our Coaches</h2>
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+        </div>
+      </div>
+          <div class="row">
+
+            {% for item in coaches %}
+              <div class="col-lg-6 d-flex">
+                  <div class="coach d-sm-flex align-items-stretch">
+                      <div class="img" style="background-image: url({{item.image.url}});"></div>
+                      <div class="text py-4 px-5 ftco-animate">
+                          <span class="subheading">{{item.position}}</span>
+                          <h3><a href="#">{{item.name}}</a></h3>
+                          <p>{{item.description}}</p>
+                          <ul class="ftco-social-media d-flex mt-4">
+                  <li class="ftco-animate"><a target ="_blank" href="{{item.twitter_link}}"  class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-twitter"></span></a></li>
+                  <li class="ftco-animate"><a target ="_blank" href="{{item.facebook_link}}" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-facebook"></span></a></li>
+                  <li class="ftco-animate"><a target ="_blank" href="{{item.instagram_link}}" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-instagram"></span></a></li>
+                </ul>
+                          <p></p>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+          </div>
+      </div>
+  </section>
+      
+            </div>
+      </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  $(document).ready(function() {
+        $('#coaches').parent().find( 'li.active' ).removeClass( 'active' );
+        $('#coaches').addClass( 'active' );
+});
+</script>
+{% endblock %}
